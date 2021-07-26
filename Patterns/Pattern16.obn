@@ -1,0 +1,18 @@
+MODULE Pattern16;
+  VAR m, n: INTEGER;
+    a, b: ARRAY 10 OF CHAR;
+    s, t: ARRAY 16 OF CHAR;
+    u: SET;
+    x: REAL;
+
+BEGIN
+  INC(m);
+  DEC(n, 10);
+  INCL(u, 3);
+  EXCL(u, 7);
+  ASSERT(m < n);
+  PACK(x, n);
+  UNPK(x, n);
+  s := "0123456789";
+  IF s < t THEN m := 1 END
+END Pattern16.

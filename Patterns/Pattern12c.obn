@@ -1,0 +1,13 @@
+MODULE Pattern12c;
+  IMPORT Pattern12a, Pattern12b, Pattern4;
+  VAR i: INTEGER; y: REAL;
+    c: CHAR;
+    PP*: PROCEDURE;
+
+BEGIN
+  i := Pattern12a.k + Pattern12a.k1;
+  y := Pattern12b.x;
+  c := Pattern4.q.name[3];
+  PP := Pattern12a.P;
+  PP;
+END Pattern12c.
