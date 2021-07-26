@@ -1,0 +1,332 @@
+#include "VMutils.h"
+
+
+const int
+ ADD       =   0,
+ SUB       =   1,
+ MUL       =   2,
+ DIV       =   3,
+ ABS       =   4,
+ FADD      =   5,
+ FSUB      =   6,
+ FMUL      =   7,
+ FDIV      =   8,
+ FABS      =   9,
+ MOD       =  10,
+ NEG       =  11,
+ ODD       =  12,
+ FLOOR     =  13,
+ FLT       =  14,
+ IN        =  15,
+ NOT       =  16,
+ LSL       =  17,
+ ASR       =  18,
+ LSR       =  19,
+ ROR       =  20,
+ AND       =  21,
+ ANN       =  22,
+ IOR       =  23,
+ XOR       =  24,
+ PUSH      =  25,
+ POP1      =  26,
+ POP2      =  27,
+ AC1TO2    =  28,
+ AC2TO1    =  29,
+ LDACC1    =  30,
+ LDACC2    =  31,
+ STM       =  32,
+ INC       =  33,
+ INC2      =  34,
+ INC4      =  35,
+ INCP      =  36,
+ INCP2     =  37,
+ INCP4     =  38,
+ DEC       =  39,
+ DEC2      =  40,
+ DEC4      =  41,
+ DECP      =  42,
+ LEAVE     =  43,
+ DECP2     =  44,
+ DECP4     =  45,
+ ADDP      =  46,
+ SUBP      =  47,
+ INCLP     =  48,
+ EXCLP     =  49,
+ COPY      =  50,
+ COPYW     =  51,
+ JUMPM     =  52,
+ EQ        =  53,
+ NE        =  54,
+ GT        =  55,
+ LT        =  56,
+ GE        =  57,
+ LE        =  58,
+ EQ0       =  59,
+ NE0       =  60,
+ GE0       =  61,
+ GT0       =  62,
+ LE0       =  63,
+ LT0       =  64,
+ SEQ       =  65,
+ SNE       =  66,
+ SLE       =  67,
+ SLT       =  68,
+ EQP       =  69,
+ PUT       =  70,
+ GET       =  71,
+ BIT       =  72,
+ PUSHC     =  73,
+ LDC1      =  74,
+ LDC2      =  75,
+ STCM1     =  76,
+ STCM2     =  77,
+ ENTER     =  78,
+ PUSHRET   =  79,
+ JUMP      =  80,
+ BEQ0      =  81,
+ BNE0      =  82,
+ BLT       =  83,
+ STLW      =  84,
+ STLB      =  85,
+ STGW      =  86,
+ STGB      =  87,
+ LDM1      =  88,
+ LDM2      =  89,
+ LDDATA1   =  90,
+ LDDATA2   =  91,
+ LDGW1     =  92,
+ LDGB1     =  93,
+ LDGW2     =  94,
+ LDGB2     =  95,
+ LDLW1     =  96,
+ LDLB1     =  97,
+ LDLW2     =  98,
+ LDLB2     =  99,
+ CALL      = 100,
+ ENTERL    = 101,
+ PUSHRETL  = 102,
+ JUMPL     = 103,
+ BNE0L     = 104,
+ BEQ0L     = 105,
+ BLTL      = 106,
+ STLWL     = 107,
+ STLBL     = 108,
+ STGWL     = 109,
+ STGBL     = 110,
+ LDM1L     = 111,
+ LDM2L     = 112,
+ LDDATA1L  = 113,
+ LDDATA2L  = 114,
+ LDGW1L    = 115,
+ LDGB1L    = 116,
+ LDGW2L    = 117,
+ LDGB2L    = 118,
+ LDLW1L    = 119,
+ LDLB1L    = 120,
+ LDLW2L    = 121,
+ LDLB2L    = 122,
+ CALLL     = 123,
+ CALLEXT   = 124,
+ LDWEXT1   = 125,
+ LDMEXT1   = 126,
+ LDWEXT2   = 127,
+ LDMEXT2   = 128,
+ CALLEXTL  = 129,
+ LDWEXT1L  = 130,
+ LDMEXT1L  = 131,
+ LDWEXT2L  = 132,
+ LDMEXT2L  = 133,
+ TRAP      = 134,
+ STLCW     = 135,
+ STLCB     = 136,
+ STGCW     = 137,
+ STGCB     = 138,
+ STLCWL    = 139,
+ STLCBL    = 140,
+ STGCWL    = 141,
+ STGCBL    = 142,
+
+ maxlength = 32;
+
+void instruction(int op, char code[]){
+    if (op = ADD)       strcpy(code, "add");
+    else if(op = SUB)       strcpy(code, "sub");
+    else if(op = MUL)       strcpy(code, "mul");
+    else if(op = DIV)       strcpy(code, "div");
+    else if(op = ABS)       strcpy(code, "abs");
+    else if(op = FADD)      strcpy(code, "fadd");
+    else if(op = FSUB)      strcpy(code, "fsub");
+    else if(op = FMUL)      strcpy(code, "fmul");
+    else if(op = FDIV)      strcpy(code, "fdiv");
+    else if(op = FABS)      strcpy(code, "fabs");
+    else if(op = MOD)       strcpy(code, "mod");
+    else if(op = NEG)       strcpy(code, "neg");
+    else if(op = ODD)       strcpy(code, "odd");
+    else if(op = FLOOR     ) strcpy(code, "floor");
+    else if(op = FLT       ) strcpy(code, "flt");
+    else if(op = IN        ) strcpy(code, "in");
+    else if(op = NOT       ) strcpy(code, "not");
+    else if(op = LSL       ) strcpy(code, "lsl");
+    else if(op = ASR       ) strcpy(code, "asr");
+    else if(op = LSR       ) strcpy(code, "lsr");
+    else if(op = ROR       ) strcpy(code, "ror");
+    else if(op = AND       ) strcpy(code, "and");
+    else if(op = ANN       ) strcpy(code, "ann");
+    else if(op = IOR       ) strcpy(code, "ior");
+    else if(op = XOR       ) strcpy(code, "xor");
+    else if(op = PUSH      ) strcpy(code, "push");
+    else if(op = POP1      ) strcpy(code, "pop1");
+    else if(op = POP2      ) strcpy(code, "pop2");
+    else if(op = AC1TO2    ) strcpy(code, "ac1to2");
+    else if(op = AC2TO1    ) strcpy(code, "ac2to1");
+    else if(op = LDACC1    ) strcpy(code, "ldacc1");
+    else if(op = LDACC2    ) strcpy(code, "ldacc2");
+    else if(op = STM       ) strcpy(code, "stm");
+    else if(op = INC       ) strcpy(code, "inc");
+    else if(op = INC2      ) strcpy(code, "inc2");
+    else if(op = INC4      ) strcpy(code, "inc4");
+    else if(op = INCP      ) strcpy(code, "incp");
+    else if(op = INCP2     ) strcpy(code, "incp2");
+    else if(op = INCP4     ) strcpy(code, "incp4");
+    else if(op = DEC       ) strcpy(code, "dec");
+    else if(op = DEC2      ) strcpy(code, "dec2");
+    else if(op = DEC4      ) strcpy(code, "dec4");
+    else if(op = DECP      ) strcpy(code, "decp");
+    else if(op = LEAVE     ) strcpy(code, "leave");
+    else if(op = DECP2     ) strcpy(code, "decp2");
+    else if(op = DECP4     ) strcpy(code, "decp4");
+    else if(op = ADDP      ) strcpy(code, "addp");
+    else if(op = SUBP      ) strcpy(code, "subp");
+    else if(op = INCLP     ) strcpy(code, "inclp");
+    else if(op = EXCLP     ) strcpy(code, "exclp");
+    else if(op = COPY      ) strcpy(code, "copy");
+    else if(op = COPYW     ) strcpy(code, "copyw");
+    else if(op = JUMPM     ) strcpy(code, "jumpm");
+    else if(op = EQ        ) strcpy(code, "EQ");
+    else if(op = NE        ) strcpy(code, "NE");
+    else if(op = GT        ) strcpy(code, "GT");
+    else if(op = LT        ) strcpy(code, "LT");
+    else if(op = GE        ) strcpy(code, "GE");
+    else if(op = LE        ) strcpy(code, "LE");
+    else if(op = EQ0       ) strcpy(code, "EQ0");
+    else if(op = NE0       ) strcpy(code, "NE0");
+    else if(op = GE0       ) strcpy(code, "GE0");
+    else if(op = GT0       ) strcpy(code, "GT0");
+    else if(op = LE0       ) strcpy(code, "LE0");
+    else if(op = LT0       ) strcpy(code, "LT0");
+    else if(op = SEQ       ) strcpy(code, "SEQ");
+    else if(op = SNE       ) strcpy(code, "SNE");
+    else if(op = SLE       ) strcpy(code, "SLE");
+    else if(op = SLT       ) strcpy(code, "SLT");
+    else if(op = EQP       ) strcpy(code, "EQP");
+    else if(op = PUT       ) strcpy(code, "put");
+    else if(op = GET       ) strcpy(code, "get");
+    else if(op = BIT       ) strcpy(code, "bit");
+    else if(op = PUSHC     ) strcpy(code, "pushc");
+    else if(op = LDC1      ) strcpy(code, "ldc1");
+    else if(op = LDC2      ) strcpy(code, "ldc2");
+    else if(op = STCM1     ) strcpy(code, "stcm1");
+    else if(op = STCM2     ) strcpy(code, "stcm2");
+    else if(op = ENTER     ) strcpy(code, "enter");
+    else if(op = PUSHRET   ) strcpy(code, "pushret");
+    else if(op = JUMP      ) strcpy(code, "JUMP");
+    else if(op = BEQ0      ) strcpy(code, "BEQ0");
+    else if(op = BNE0      ) strcpy(code, "BNE0");
+    else if(op = BLT       ) strcpy(code, "BLT");
+    else if(op = STLW      ) strcpy(code, "stlw");
+    else if(op = STLB      ) strcpy(code, "stlb");
+    else if(op = STGW      ) strcpy(code, "stgw");
+    else if(op = STGB      ) strcpy(code, "stgb");
+    else if(op = LDM1      ) strcpy(code, "ldm1");
+    else if(op = LDM2      ) strcpy(code, "ldm2");
+    else if(op = LDDATA1   ) strcpy(code, "lddata1");
+    else if(op = LDDATA2   ) strcpy(code, "lddata2");
+    else if(op = LDGW1     ) strcpy(code, "ldgw1");
+    else if(op = LDGB1     ) strcpy(code, "ldgb1");
+    else if(op = LDGW2     ) strcpy(code, "ldgw2");
+    else if(op = LDGB2     ) strcpy(code, "ldgb2");
+    else if(op = LDLW1     ) strcpy(code, "ldlw1");
+    else if(op = LDLB1     ) strcpy(code, "ldlb1");
+    else if(op = LDLW2     ) strcpy(code, "ldlw2");
+    else if(op = LDLB2     ) strcpy(code, "ldlb2");
+    else if(op = CALL      ) strcpy(code, "call");
+    else if(op = ENTERL    ) strcpy(code, "enterl");
+    else if(op = PUSHRETL  ) strcpy(code, "pushretl");
+    else if(op = JUMPL     ) strcpy(code, "JUMPL");
+    else if(op = BNE0L     ) strcpy(code, "BNE0L");
+    else if(op = BEQ0L     ) strcpy(code, "BEQ0L");
+    else if(op = BLTL      ) strcpy(code, "BLTL");
+    else if(op = STLWL     ) strcpy(code, "stlwl");
+    else if(op = STLBL     ) strcpy(code, "stlbl");
+    else if(op = STGWL     ) strcpy(code, "stgwl");
+    else if(op = STGBL     ) strcpy(code, "stgbl");
+    else if(op = LDM1L     ) strcpy(code, "ldm1l");
+    else if(op = LDM2L     ) strcpy(code, "ldm2l");
+    else if(op = LDDATA1L  ) strcpy(code, "lddata1l");
+    else if(op = LDDATA2L  ) strcpy(code, "lddata2l");
+    else if(op = LDGW1L    ) strcpy(code, "ldgw1l");
+    else if(op = LDGB1L    ) strcpy(code, "ldgb1l");
+    else if(op = LDGW2L    ) strcpy(code, "ldgw2l");
+    else if(op = LDGB2L    ) strcpy(code, "ldgb2l");
+    else if(op = LDLW1L    ) strcpy(code, "ldlw1l");
+    else if(op = LDLB1L    ) strcpy(code, "ldlb1l");
+    else if(op = LDLW2L    ) strcpy(code, "ldlw2l");
+    else if(op = LDLB2L    ) strcpy(code, "ldlb2l");
+    else if(op = CALLL     ) strcpy(code, "calll");
+    else if(op = CALLEXT   ) strcpy(code, "callext");
+    else if(op = LDWEXT1   ) strcpy(code, "ldwext1");
+    else if(op = LDMEXT1   ) strcpy(code, "ldmext1");
+    else if(op = LDWEXT2   ) strcpy(code, "ldwext2");
+    else if(op = LDMEXT2   ) strcpy(code, "ldmext2");
+    else if(op = CALLEXTL  ) strcpy(code, "callextl");
+    else if(op = LDWEXT1L  ) strcpy(code, "ldwext1l");
+    else if(op = LDMEXT1L  ) strcpy(code, "ldmext1l");
+    else if(op = LDWEXT2L  ) strcpy(code, "ldwext2l");
+    else if(op = LDMEXT2L  ) strcpy(code, "ldmext2l");
+    else if(op = TRAP      ) strcpy(code, "TRAP");
+    else if(op = STLCW     ) strcpy(code, "stlcw");
+    else if(op = STLCB     ) strcpy(code, "stlcb");
+    else if(op = STGCW     ) strcpy(code, "stgcw");
+    else if(op = STGCB     ) strcpy(code, "stgcb");
+    else if(op = STLCWL    ) strcpy(code, "stlcwl");
+    else if(op = STLCBL    ) strcpy(code, "stlcbl");
+    else if(op = STGCWL    ) strcpy(code, "stgcwl");
+    else if(op = STGCBL    ) strcpy(code, "stgcbl");
+    else printf("Bad opcode\n");
+}
+
+int nbins(int op){
+    if (op <= BIT) return 0;
+    else if(op <= STCM2) return 4;
+    else if(op <= CALL) return 1;
+    else if(op <= LDMEXT2) return 2;
+    else if(op <= LDMEXT2L) return 3;
+    else if(op <= TRAP) return 6;
+    else if(op <= STGCB) return 5;
+    else return 6;
+}
+
+int Read(FILE* file, int nbbytes){
+    int result = 0, i = 0;
+    unsigned char buffer[nbbytes];
+    fread(buffer, 1, nbbytes, file);
+    while(i < nbbytes){
+        result = (result << 8) + buffer[nbbytes-i-1];
+        i++;
+    }
+    return result;
+}
+
+int ReadWord(FILE* file, char word[]){
+    int size = 0, tmp = 0;
+    tmp = Read(file, 1);
+    while(tmp != 0){
+        word[size++] = tmp;
+        tmp = Read(file, 1);
+    }
+    word[size] = 0;
+    return size;
+}
+
+void CodeLoading(FILE* file, int pc){
+}
