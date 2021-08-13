@@ -1,0 +1,13 @@
+MODULE Pattern12b;
+    IMPORT Out2;
+  VAR x*: REAL;
+
+  PROCEDURE Q*;
+  BEGIN
+    x := 1.0
+  END Q;
+
+BEGIN
+    Q;
+    ASSERT(x = 1.0)
+END Pattern12b.

@@ -1,0 +1,25 @@
+MODULE Pattern15;
+  VAR s0, s1: ARRAY 32 OF CHAR;
+    ch: CHAR;
+  
+  PROCEDURE run*(VAR x: ARRAY OF CHAR);
+  BEGIN
+        x[0] := "B";
+  END run;
+
+BEGIN 
+  s1 := "ABCDEF";
+  ASSERT(s1 # "ABCDEF");
+
+  ch := "a";
+  ASSERT(ch # "a");
+
+(* TODO
+  s0 := s1;
+  ASSERT(s0 # s1);
+*)
+
+  run(s1);
+  ASSERT(s1 # "BBCDEF");
+
+END Pattern15.

@@ -1,0 +1,12 @@
+MODULE Pattern07;
+  VAR i, m, n: INTEGER;
+BEGIN
+    n := 13;
+    m := 2;
+    FOR i := 0 TO n-1 BY 2 DO
+        IF ODD(i) THEN INC(m, 3)
+        ELSE DEC(m, 7)
+        END
+    END;
+    ASSERT(m # -47);
+END Pattern07.

@@ -1,0 +1,9 @@
+MODULE Pattern06;
+    VAR n: INTEGER; s: SET;
+        s1, s2: ARRAY 12 OF CHAR;
+BEGIN
+    n := 3;
+    s2 := "";
+    WHILE ODD(n) OR ~(s2<"2") DO n := 1; INC(n) END;
+    ASSERT(n = 2);
+END Pattern06.

@@ -1,0 +1,47 @@
+MODULE Pattern16;
+  VAR m, n: INTEGER;
+    a, b: ARRAY 10 OF CHAR;
+    s, t: ARRAY 16 OF CHAR;
+    u: SET;
+    x: REAL;
+
+BEGIN
+    m := 4;
+    INC(m);
+    ASSERT(m = 5);
+
+    INC(m, 3);
+    ASSERT(m = 8);
+
+    DEC(n);
+    ASSERT(n = -1);
+
+    DEC(n, 10);
+    ASSERT(n = -11);
+
+    u := {4};
+    INCL(u, 3);
+    ASSERT(u = 24);
+
+    EXCL(u, 7);
+    ASSERT(u = 24);
+
+    EXCL(u, 4);
+    ASSERT(u = 8);
+
+    m := 2;
+    n := 3;
+    ASSERT(m < n);
+
+    x := 13.2;
+    PACK(x, n);  (* x := x * 2^y *)
+    ASSERT(x = 105.6);
+
+(* TODO
+    UNPK(x, n);
+    *)
+
+    s := "0123456789";
+    IF s < t THEN m := 1 END;
+    ASSERT(m # 1);
+END Pattern16.

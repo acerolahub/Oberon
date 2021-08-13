@@ -1,0 +1,19 @@
+MODULE Pattern01;
+    VAR ch: CHAR;
+        k: INTEGER;
+        x: REAL;
+        s: SET;
+
+BEGIN
+    ch := 31X;
+    ASSERT(ch = 31X);
+
+    k := 10;
+    ASSERT(k = 10);
+
+    x := 1.0 + 3.1;
+    ASSERT(x = 4.1);
+
+    s := {0, 4, 8};
+    ASSERT(s = 273);
+END Pattern01.

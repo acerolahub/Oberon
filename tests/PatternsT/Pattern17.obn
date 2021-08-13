@@ -1,0 +1,56 @@
+MODULE Pattern17;
+    PROCEDURE run;
+      VAR m, n: INTEGER;
+        x, y: REAL;
+        b: BOOLEAN; ch: CHAR;
+
+    BEGIN
+        m := -2; x := -3.4; ch := "a";
+
+        n := ABS(m);
+        ASSERT(n = 2);
+
+        n := ABS(n);
+        ASSERT(n = 2);
+
+        y := ABS(x);
+        ASSERT(y = 3.4);
+
+        b := ODD(n);
+        ASSERT(b = FALSE);
+
+        n := FLOOR(x);
+        ASSERT(n = -4);
+
+        n := ORD(ch);
+        ASSERT(n = 97);
+        
+        y := FLT(m);
+        ASSERT(y = -2.0);
+
+        n := LSL(m, 3);
+        ASSERT(n = -16);
+        
+        n := ASR(m, 8);
+        ASSERT(n = -1);
+
+        n := ROR(m, n);
+        ASSERT(n = -3);
+
+        m := 2;
+        n := LSL(m, 3);
+        ASSERT(n = 16);
+        
+        n := ASR(m, 1);
+        ASSERT(n = 1);
+
+        n := ROR(m, n);
+        ASSERT(n = 1);
+
+        n := LSR(m, 1); 
+        ASSERT(n = 1);
+    END run;
+
+BEGIN
+    run;
+END Pattern17.

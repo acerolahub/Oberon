@@ -1,0 +1,55 @@
+MODULE Pattern05;
+    VAR n: INTEGER; s: SET;
+        s1, s2: ARRAY 12 OF CHAR;
+        b: BOOLEAN;
+        x: REAL;
+BEGIN
+    s1 := "e";
+    IF (s1<"e") & ~((s2<"2") OR (s1 = s2) & ODD(n)) THEN n := 1 ELSE n := 0 END;
+    ASSERT(n = 0);
+
+    s1 := "d";
+    IF (s1<"e") & ((s1<"2") OR (s1 # s2) & ~ODD(n)) THEN n := 1 ELSE n := 0 END;
+    ASSERT(n = 1);
+
+    b := ODD(n) OR ~(s2<"2");
+    ASSERT(b = TRUE);
+    
+    b := (s1<"") & ~((s2<"2") OR (s1 = s2) & ODD(n));
+    ASSERT(b = FALSE);
+
+    WHILE ODD(n) OR ~(s2<"2") DO n := 1; INC(n) END;
+    ASSERT(n = 2);
+
+    IF (s1<"") & ~(s2<"2") THEN n := 1; INC(n) END;
+    ASSERT(n = 2);
+
+    IF n = 0 THEN INC(n) END;
+    ASSERT(n = 2);
+
+    IF (n >= 0) & (n<100) THEN DEC(n) END;
+    ASSERT(n = 1);
+
+    IF ODD(n) OR (n IN s) THEN n := -1000 END;
+    ASSERT(n = -1000);
+
+    IF n<0 THEN s := {3}
+        ELSIF n<10 THEN s := {2}
+        ELSIF n<100 THEN s := {1}
+        ELSE s := {0}
+    END;
+    ASSERT(s = 8);  
+    
+    IF x = 0.0 THEN x := 2.0 END;
+    ASSERT(x = 2.0);
+
+    IF (x >= 0.0) & (x<10.0) THEN x := x - 1.0 END;
+    ASSERT(x = 1.0);
+
+    IF x<0.0 THEN s := {3}
+        ELSIF x<10.0 THEN s := {2}
+        ELSIF x<100.0 THEN s := {1}
+        ELSE s := {0}
+    END;
+    ASSERT(s = 4);
+END Pattern05.

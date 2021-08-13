@@ -1,5 +1,0 @@
-MODULE Pattern7;
-  VAR i, m, n: INTEGER;
-BEGIN
-  FOR i := 0 TO n-1 BY 2 DO m := 2 END
-END Pattern7.

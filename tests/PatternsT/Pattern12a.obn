@@ -1,0 +1,19 @@
+MODULE Pattern12a;
+  VAR k*: INTEGER;
+    k1*: INTEGER;
+    k2*: INTEGER;
+
+  PROCEDURE Q*;
+  BEGIN
+    k1 := 1
+  END Q;
+
+  PROCEDURE P*;
+  BEGIN
+    k := -1
+  END P;
+
+BEGIN
+    P;
+    ASSERT(k = -1)
+END Pattern12a.

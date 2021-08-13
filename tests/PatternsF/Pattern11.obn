@@ -1,0 +1,16 @@
+MODULE Pattern11;
+  VAR s: SET; m, n: INTEGER;
+    b: BOOLEAN;
+BEGIN
+  m := 2;
+  s := {m};
+  s := {0..n};
+  s := {0..3};
+  s := {m..31};
+  s := {m..n};
+  b := n IN {2,3,5};
+  ASSERT(b # FALSE);
+
+  IF 2 IN {4..1} THEN b := TRUE ELSE b := FALSE END;
+  ASSERT(b # FALSE);
+END Pattern11.

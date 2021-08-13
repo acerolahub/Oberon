@@ -1,0 +1,20 @@
+MODULE Pattern12c;
+  IMPORT Out2, Pattern04, Pattern12a, Pattern12b;
+  VAR i: INTEGER; y: REAL;
+    c: CHAR;
+    PP*: PROCEDURE;
+
+BEGIN
+  i := Pattern12a.k + Pattern12a.k1;
+  ASSERT(i = -1);
+
+  y := Pattern12b.x + 2.1;
+  ASSERT(y = 3.1);
+
+  c := Pattern04.r.name[-Pattern12a.k];
+  ASSERT(c = "0");
+
+  PP := Pattern12a.Q;
+  PP;
+  ASSERT(Pattern12a.k1 = 1);
+END Pattern12c.

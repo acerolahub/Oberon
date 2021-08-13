@@ -1,5 +1,5 @@
 all: VMutils.c VMutils.h VM.c
-	gcc VM.c VMutils.c -o VM
+	gcc -g VM.c VMutils.c -o VM -lm
 
 clean:
-	rm VM
+	rm VM *.trace *.rsc *.smb

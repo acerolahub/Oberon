@@ -1,87 +1,46 @@
 #include "VMutils.h"
 
-const char* filename = "Pattern1.rsc";
+int posVM = 0, nbmod = 0;
+Node MODULES[NBMOD];
+unsigned char VMTABLE[VMLEN];
+VMvar VMVAR;
+char* MODULE;
+FILE* TRACEFILE;
 
-int main(void) {
-    int nofimps, i, td, datasize, strx, pc, nbbytes;
+int main(int argc, char *argv[])
+{
+    int opt, disass = 0;
+    char* tracefile = calloc(16, 1); 
+    char* module = calloc(16, 1);
+    MODULE = calloc(20, 1);
 
-    char buffer[maxlength];
+    while((opt = getopt(argc, argv, "df:")) != -1)
+    {
+        switch(opt)
+        {
+            case 'd':
+                printf("disassemble\n");
+                disass = 1;
+                break;
+            case 'f':
+                printf("filename: %s\n", optarg);
+                strcpy(module, optarg);
+        }
+    }
 
-    FILE* in_file = fopen(filename, "rb");
-    if (!in_file) {
+    sprintf(tracefile, "%s.trace", module);
+    TRACEFILE = fopen(tracefile, "w");
+    if (!TRACEFILE) {
         perror("fopen");
         exit(EXIT_FAILURE);
     }
 
-    struct stat sb;
-    if (stat(filename, &sb) == -1) {
-        perror("stat");
-        exit(EXIT_FAILURE);
-    }
+    initVM();
+    Load(module, disass);
 
-    fseek(in_file, 0, SEEK_SET);
-    ReadWord(in_file, buffer);
-    printf("\nModule: %s\n", buffer);
-
-    Read(in_file, 4);  // we read the key
-
-    // nbr of imported modules
-    nofimps = Read(in_file, 1);
-    printf("\nNbr of imports: %d\n", nofimps);
-
-    i = 0;
-    while(i<nofimps){
-        // Loader les modules importés ici
-        ReadWord(in_file, buffer);
-        i++;
-    }
-
-    // type descriptor
-    td = Read(in_file, 4);
-    printf("\ntdx*4 = %d\n", td);
-
-    i = 0;
-    while(i < td/4){
-        printf("%d ", Read(in_file, 4));
-        i++;
-    }
-    printf("\n");
-
-    // data
-    datasize = Read(in_file, 4);
-    printf("\ndatasize = %d\n", datasize);
-
-    // strx
-    strx = Read(in_file, 4);
-    printf("\nstrx = %d\n", strx);
-
-    // bytesnbr
-    nbbytes = Read(in_file, 4);
-    printf("\nnbbytes = %d\n", nbbytes);
-
-    // pc number
-    pc = Read(in_file, 4);
-    printf("\npc = %d\n", pc);
-
-    // code loading
-    CodeLoading(in_file, pc);
-    
-
-
-    char* file_contents = malloc(sb.st_size);
-    fread(file_contents, sb.st_size, 1, in_file);
-
-    fseek(in_file, sb.st_size-4, SEEK_SET);
-
-    printf("read data: %s\n", file_contents);
-    printf("%d %d", sb.st_size, Read(in_file, 4));
-
-    fseek(in_file, 0, SEEK_SET);
-    printf("\n%d, %s\n", ReadWord(in_file, buffer), buffer);
-
-    fclose(in_file);
-
-    free(file_contents);
+    free(tracefile);
+    fclose(TRACEFILE);
+    free(MODULE);
+    free(module);
     exit(EXIT_SUCCESS);
 }
-

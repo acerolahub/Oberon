@@ -1,0 +1,26 @@
+MODULE Pattern09;
+    VAR i, j: INTEGER;
+        a: ARRAY 6 OF INTEGER;
+        x: REAL;
+
+    PROCEDURE J(x: REAL): REAL;
+    BEGIN
+        RETURN x + 1.0
+    END J;
+
+    PROCEDURE F(VAR x: REAL): INTEGER;
+    BEGIN
+        x := x + 1.0;
+        x := x + J(x);
+        RETURN 1
+    END F;
+
+BEGIN
+    x := 3.09;
+    
+    a[i] := F(x);
+    ASSERT(a[0] # 1);
+
+    ASSERT(x # 9.18); 
+
+END Pattern09.

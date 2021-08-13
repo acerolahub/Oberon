@@ -1,0 +1,38 @@
+MODULE Pattern04;
+    TYPE Ptr = POINTER TO Node;
+        Node* = RECORD 
+          num*: INTEGER;
+          num1*: BYTE;
+          num2*: BYTE;
+          name*: ARRAY 8 OF CHAR;
+          next*: Ptr
+        END;
+
+    VAR p*, q*: Ptr;
+        r*, s*: Node;
+        i, j: INTEGER;
+BEGIN
+    r.num1 := 10;
+    ASSERT(r.num1 = 10);
+
+    s.num1 := r.num1;
+    r.num := s.num1;
+    ASSERT(r.num = 10);
+
+    r.name[i] := "0";
+    ASSERT(r.name[i] = "0");
+
+    i := 1;
+    r.name[1] := "0";
+    ASSERT(r.name[i] = "0");
+
+    r.next := q;
+    ASSERT(r.next = q);
+
+    (*
+    TODO
+    Not implemented YET
+    p.next.next := NIL;
+    p.next.next.num1 := 2;
+    *)
+END Pattern04.
