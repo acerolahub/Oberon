@@ -1,0 +1,33 @@
+MODULE CRIBLE;
+    IMPORT Out2;
+    VAR supprimes: ARRAY 50 OF INTEGER;
+    i, multiple: INTEGER;
+
+BEGIN
+    supprimes[0] := 1;
+    supprimes[1] := 1;
+
+    FOR i := 2 TO 49 DO supprimes[i] := 0 END;
+
+    FOR i := 2 TO 49 DO
+        IF supprimes[i] = 0 THEN
+            multiple := 2*i;
+            WHILE multiple < 50 DO
+                supprimes[multiple] := 1;
+                INC(multiple, i);
+            END
+        END
+    END;
+
+    FOR i:=0 TO 49 DO
+        IF supprimes[i] = 0 THEN
+            Out2.Int(i, 4);
+            Out2.Ln;
+        END
+    END;
+
+    Out2.Ln;
+
+
+END CRIBLE.
+

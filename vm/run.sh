@@ -2,11 +2,11 @@
 
 if [ -n "$1" ]
 then
-    cd ../compiler/Unixv2/
+    cd ../compiler/
     make
     cd -
     echo "----- Compilation --------"
-    echo "\"$1\"" | ../compiler/Unixv2/Oberon
+    echo "\"$1\"" | ../compiler/Oberon
     res=$?
     make
 
